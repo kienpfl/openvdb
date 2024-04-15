@@ -333,7 +333,7 @@ inline bool
 writeAsType(std::ostream& os, const std::any& val)
 {
     if (val.type() == typeid(T)) {
-        os << std::any_cast<T>(val);
+        os << boost::any_cast<T>(val);
         return true;
     }
     return false;

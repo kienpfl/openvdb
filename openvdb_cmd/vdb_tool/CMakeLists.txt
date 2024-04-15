@@ -157,7 +157,7 @@ else()
         " Couldn't find OpenVDB\n"
         " Set OPENVDB_CMAKE_PATH to <OpenVDB install path>/lib/cmake/OpenVDB")
     endif()
-    target_link_libraries(vdb_tool_common INTERFACE TBB::tbb OpenVDB::openvdb)
+    target_link_libraries(vdb_tool_common INTERFACE tbb OpenVDB::openvdb)
 endif()
 
 target_include_directories(vdb_tool_common INTERFACE "${Boost_INCLUDE_DIRS}" "${OpenVDB_INCLUDE_DIRS}" "include")

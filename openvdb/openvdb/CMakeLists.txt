@@ -109,7 +109,7 @@ endif()
 # Collect and configure lib dependencies
 
 if(OPENVDB_USE_DELAYED_LOADING)
-  find_package(Boost ${MINIMUM_BOOST_VERSION} REQUIRED COMPONENTS iostreams)
+  find_package(boost ${MINIMUM_BOOST_VERSION} REQUIRED COMPONENTS iostreams)
 else()
   find_package(Boost ${MINIMUM_BOOST_VERSION} REQUIRED COMPONENTS headers)
 endif()
@@ -119,14 +119,6 @@ if(OPENVDB_FUTURE_DEPRECATION AND FUTURE_MINIMUM_BOOST_VERSION)
   set(FULL_BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
   if(${FULL_BOOST_VERSION} VERSION_LESS FUTURE_MINIMUM_BOOST_VERSION)
     message(DEPRECATION "Support for Boost versions < ${FUTURE_MINIMUM_BOOST_VERSION} "
-      "is deprecated and will be removed.")
-  endif()
-endif()
-
-find_package(TBB ${MINIMUM_TBB_VERSION} REQUIRED COMPONENTS tbb)
-if(OPENVDB_FUTURE_DEPRECATION AND FUTURE_MINIMUM_TBB_VERSION)
-  if(${TBB_VERSION} VERSION_LESS FUTURE_MINIMUM_TBB_VERSION)
-    message(DEPRECATION "Support for TBB versions < ${FUTURE_MINIMUM_TBB_VERSION} "
       "is deprecated and will be removed.")
   endif()
 endif()
@@ -214,7 +206,7 @@ endif()
 # always be pulled from there (we should always be using the version of TBB
 # shipped with Houdini).
 
-list(APPEND OPENVDB_CORE_DEPENDENT_LIBS TBB::tbb)
+list(APPEND OPENVDB_CORE_DEPENDENT_LIBS tbb)
 
 if(USE_LOG4CPLUS)
   list(APPEND OPENVDB_CORE_DEPENDENT_LIBS Log4cplus::log4cplus)
@@ -245,9 +237,9 @@ endif()
 # other headers.
 
 if(OPENVDB_USE_DELAYED_LOADING)
-  list(APPEND OPENVDB_CORE_DEPENDENT_LIBS Boost::iostreams)
+  list(APPEND OPENVDB_CORE_DEPENDENT_LIBS boost::iostreams)
 else()
-  list(APPEND OPENVDB_CORE_DEPENDENT_LIBS Boost::headers)
+  list(APPEND OPENVDB_CORE_DEPENDENT_LIBS boost::headers)
 endif()
 
 if(WIN32)
@@ -258,7 +250,7 @@ if(WIN32)
   # -DBOOST_ALL_NO_LIB can also be provided manually.
   if(OPENVDB_DISABLE_BOOST_IMPLICIT_LINKING)
       list(APPEND OPENVDB_CORE_DEPENDENT_LIBS
-        Boost::disable_autolinking  # add -DBOOST_ALL_NO_LIB
+        boost::disable_autolinking  # add -DBOOST_ALL_NO_LIB
       )
   endif()
 endif()

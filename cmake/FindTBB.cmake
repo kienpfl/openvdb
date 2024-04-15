@@ -367,7 +367,7 @@ unset(_TBB_ORIG_CMAKE_FIND_LIBRARY_SUFFIXES)
 # ------------------------------------------------------------------------
 
 include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(TBB
+find_package_handle_standard_args(tbb
   FOUND_VAR TBB_FOUND
   REQUIRED_VARS
     Tbb_INCLUDE_DIR
